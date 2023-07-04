@@ -1,18 +1,1 @@
-{
-    "FileStorage.c0ec8eb6-fa8d-4e92-90c3-76ef54f3e9d6": {
-        "id": "c0ec8eb6-fa8d-4e92-90c3-76ef54f3e9d6",
-        "created_at": "2023-07-04T11:06:24.957018",
-        "updated_at": "2023-07-04T11:06:24.957034",
-        "name": "My_First_Model",
-        "my_number": 89,
-        "__class__": "BaseModel"
-    },
-    "FileStorage.6f73c428-061b-4eef-a78d-61f2daa4415a": {
-        "id": "6f73c428-061b-4eef-a78d-61f2daa4415a",
-        "created_at": "2023-07-04T11:07:22.069264",
-        "updated_at": "2023-07-04T11:07:22.069277",
-        "name": "My_First_Model",
-        "my_number": 89,
-        "__class__": "BaseModel"
-    }
-}
+{"FileStorage.c0ec8eb6-fa8d-4e92-90c3-76ef54f3e9d6": {"id": "c0ec8eb6-fa8d-4e92-90c3-76ef54f3e9d6", "created_at": "2023-07-04T11:06:24.957018", "updated_at": "2023-07-04T11:06:24.957034", "name": "My_First_Model", "my_number": 89, "__class__": "BaseModel"}, "FileStorage.6f73c428-061b-4eef-a78d-61f2daa4415a": {"id": "6f73c428-061b-4eef-a78d-61f2daa4415a", "created_at": "2023-07-04T11:07:22.069264", "updated_at": "2023-07-04T11:07:22.069277", "name": "My_First_Model", "my_number": 89, "__class__": "BaseModel"}, "FileStorage.9d24c95f-9982-41df-b360-9928c224430d": {"id": "9d24c95f-9982-41df-b360-9928c224430d", "created_at": "2023-07-04T11:22:19.297776", "updated_at": "2023-07-04T11:22:19.297794", "name": "My_First_Model", "my_number": 89, "__class__": "BaseModel"}}
