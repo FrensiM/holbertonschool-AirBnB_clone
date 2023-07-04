@@ -5,6 +5,7 @@
 import os
 import datetime
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -22,16 +23,20 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        new_dic = {}
-        for key in FileStorage.__objects:
-            new_dic[key] = FileStorage.__objects[key].to_dict()
-        with open(FileStorage.__file_path, encoding="utf-8", mode="w") as f:
-            json.dump(new_dic, f)
+        with open(FileStorage.__file_path, 'w') as f:
+            new_dict = {}
+            x = self.all()
+            for element in x:
+                new_dict[element] = x[element].to_dict()
+            f.write(json.dumps(new_dict))
+        return True
 
     def reload(self):
-       if os.path.exists(self.__file_path):
-            with open(self.__file_path, 'r', encoding="utf-8") as file:
-                try:
-                    self.__objects = json.load(file)
-                except json.JSONDecodeError:
-                    pass
+       if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, 'r') as f:
+                content = f.read()
+                if len(content) != 0:
+                    obj = json.loads(content)
+                    for key, value in obj.items():
+                        value = eval(value['__class__'])(**value)
+                        FileStorage.new(self, value)
