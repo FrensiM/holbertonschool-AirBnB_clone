@@ -22,7 +22,6 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        ''''save fun'''
         new_dic = {}
         for key in FileStorage.__objects:
             new_dic[key] = FileStorage.__objects[key].to_dict()
@@ -30,12 +29,9 @@ class FileStorage:
             json.dump(new_dic, f)
 
     def reload(self):
-        '''reload fun'''
-        try:
-            with open(FileStorage.__file_path,
-                      encoding="utf-8", mode="r") as f:
-                for key, value in json.load(f).items():
-                    value = eval(value["__class__"].items())
-                    self.__objects[key] = value
-        except FileNotFoundError:
-            pass
+       if os.path.exists(self.__file_path):
+            with open(self.__file_path, 'r', encoding="utf-8") as file:
+                try:
+                    self.__objects = json.load(file)
+                except json.JSONDecodeError:
+                    pass
