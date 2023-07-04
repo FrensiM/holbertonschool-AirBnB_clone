@@ -12,14 +12,17 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        '''all func'''
         return FileStorage.__objects
 
     def new(self, obj):
+        '''new func'''
         name_clas = self.__class__.__name__
         key = name_clas + "." + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
+        ''''save fun'''
         new_dic = {}
         for key in FileStorage.__objects:
             new_dic[key] = FileStorage.__objects[key].to_dict()
@@ -27,6 +30,7 @@ class FileStorage:
             json.dump(new_dic, f)
 
     def reload(self):
+        '''reload fun'''
         try:
             with open(FileStorage.__file_path,
                       encoding="utf-8", mode="r") as f:
