@@ -32,7 +32,7 @@ class FileStorage:
         return True
 
     def reload(self):
-       if os.path.exists(FileStorage.__file_path):
+        if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
                 content = f.read()
                 if len(content) != 0:
