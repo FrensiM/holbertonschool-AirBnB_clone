@@ -17,10 +17,8 @@ class HBNBCommand(cmd.Cmd):
         '''exit with end of life'''
         return True
 
-    def empty_line(self, arg):
+    def emptyline(self, arg):
         '''line wiht empty element'''
-        if arg == " ":
-            return None
         pass
 
 
