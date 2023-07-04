@@ -29,9 +29,9 @@ class BaseModel:
         return (f"[{cl_name}] ({self.id}) {self.__dict__}")
 
     def save(self):
-        '''saving '''
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.utcnow()
         models.storage.save()
+        return self.updated_at
 
     def to_dict(self):
         '''dict'''
