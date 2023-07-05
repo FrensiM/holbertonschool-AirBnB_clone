@@ -30,12 +30,12 @@ class FileStorage:
     def reload(self):
         my_dict = {'BaseModel': BaseModel}
         try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                for key, value in (json.load(f)).items():
-                    value = eval(value["__class__"])(**value)
-                    self.__objects[key] = value
-        except Exception:
+            temp = {}
+            with open(FileStorage.__file_path, 'r') as f:
+                temp = json.load(f)
+                for key, val in temp.items():
+                    self.all()[key] = classes[val['__class__']](**val)
+        except FileNotFoundError:
             pass
-
     def file_path():
         return FileStorage.__file_path
