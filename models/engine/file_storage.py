@@ -14,7 +14,7 @@ class FileStorage:
 
     def new(self, obj):
         '''new func'''
-        name_clas = self.__class__.__name__
+        name_clas = obj.__class__.__name__
         key = name_clas + "." + obj.id
         FileStorage.__objects[key] = obj
 
@@ -24,7 +24,7 @@ class FileStorage:
             x = self.all()
             for element in x:
                 new_dict[element] = x[element].to_dict()
-            f.write(json.dump(new_dict))
+            f.write(json.dumps(new_dict))
         return True
 
     def reload(self):
@@ -32,10 +32,11 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 content = f.read()
                 if len(content) != 0:
-                    obj = json.load(content)
+                    obj = json.loads(content)
                     for key, value in obj.items():
                         value = eval(value['__class__'])(**value)
                         FileStorage.new(self, value)
         return True
+    
     def file_path():
         return FileStorage.__file_path
