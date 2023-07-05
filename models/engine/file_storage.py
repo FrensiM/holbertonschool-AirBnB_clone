@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 '''new class'''
-import sys
-sys.path.append("/path/to/models_directory")
 import os
 import json
 from models.base_model import BaseModel
