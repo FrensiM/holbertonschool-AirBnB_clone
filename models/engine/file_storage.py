@@ -1,11 +1,7 @@
 #!/usr/bin/python3
 '''new class'''
-
-
 import os
-import datetime
 import json
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -31,7 +27,7 @@ class FileStorage:
             f.write(json.dumps(new_dict))
         return True
 
-    '''def reload(self):
+    def reload(self):
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
                 content = f.read()
@@ -40,21 +36,6 @@ class FileStorage:
                     for key, value in obj.items():
                         value = eval(value['__class__'])(**value)
                         FileStorage.new(self, value)
-    '''
-    def reload(self):
-        classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
-        try:
-            temp = {}
-            with open(FileStorage.__file_path, 'r') as f:
-                temp = json.load(f)
-                for key, val in temp.items():
-                    self.all()[key] = classes[val['__class__']](**val)
-        except FileNotFoundError:
-            pass
 
     def file_path():
         return FileStorage.__file_path
