@@ -31,7 +31,7 @@ class FileStorage:
             f.write(json.dumps(new_dict))
         return True
 
-    def reload(self):
+    '''def reload(self):
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
                 content = f.read()
@@ -40,6 +40,17 @@ class FileStorage:
                     for key, value in obj.items():
                         value = eval(value['__class__'])(**value)
                         FileStorage.new(self, value)
+    '''
+    def reload(self)
+        my_dict = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                   'State': State, 'City': City, 'Amenity': Amenity,
+                   'Review': Review}
+        if os.path.isfile(FileStorage.__file_path):
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+                other_dict = json.loads(file.read())
+                for key, val in other_dict.items():
+                    self.new(my_dict[val['__class__']](**val))
+        
 
     def file_path():
         return FileStorage.__file_path
