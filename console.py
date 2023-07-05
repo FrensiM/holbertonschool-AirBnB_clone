@@ -25,6 +25,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         '''create new instance'''
+        args = arg.split()
         if len(arg) == 0:
             print("** class name missing **")
             return False
@@ -37,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         '''Prints the string representation of an instance'''
-        arg = arg.split()
+        arg = shlex.split()
         if len(arg) == 0:
             print("** class name missing **")
             return False
@@ -56,6 +57,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         '''Deletes an instance based on the class name'''
+        args = shlex.split()
         if len(arg) == 0:
             print("** class name missing **")
             return False
@@ -74,6 +76,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         '''Prints all str repr of instance of said Class'''
+        args = shlex.split(arg)
         if len(arg) != 0:
             if arg not in ls:
                 print("** class doesn't exist **")
@@ -87,6 +90,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         '''update an instance based in the class name'''
+        args = shlex.split(arg)
         if len(arg) == 0:
             print("** class name missing **")
             return False
