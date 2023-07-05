@@ -41,7 +41,7 @@ class FileStorage:
                         value = eval(value['__class__'])(**value)
                         FileStorage.new(self, value)
     '''
-    def reload(self)
+    def reload(self):
         my_dict = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
                    'State': State, 'City': City, 'Amenity': Amenity,
                    'Review': Review}
