@@ -29,11 +29,13 @@ class FileStorage:
 
     def reload(self):
         my_dict = {'BaseModel': BaseModel}
-        if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
-                other_dict = json.loads(file.read())
-                for key, val in other_dict.items():
-                    self.new(my_dict[val['__class__']](**val))
+        try:
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
+                for key, value in (json.load(f)).items():
+                    value = eval(value["__class__"])(**value)
+                    self.__objects[key] = value
+        except Exception:
+            pass
 
     def file_path():
         return FileStorage.__file_path
