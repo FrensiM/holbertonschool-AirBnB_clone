@@ -28,6 +28,7 @@ class FileStorage:
         return True
 
     def reload(self):
+        return None
         my_dict = {'BaseModel': BaseModel}
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
