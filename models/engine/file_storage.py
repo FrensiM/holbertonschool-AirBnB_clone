@@ -19,6 +19,7 @@ class FileStorage:
         name_clas = obj.__class__.__name__
         key = name_clas + "." + obj.id
         FileStorage.__objects[key] = obj
+        return True
 
     def save(self):
         with open(FileStorage.__file_path, 'w') as f:

@@ -117,5 +117,5 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    ls = ['BaseModel']
+    ls = ['BaseModel', 'User']
     HBNBCommand().cmdloop()
