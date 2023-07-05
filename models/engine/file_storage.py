@@ -28,13 +28,14 @@ class FileStorage:
         return True
 
     def reload(self):
-        return None
-        my_dict = {'BaseModel': BaseModel}
-        if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
-                other_dict = json.loads(file.read())
-                for key, val in other_dict.items():
-                    self.new(my_dict[val['__class__']](**val))
-            pass
+        if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, 'r') as f:
+                content = f.read()
+                if len(content) != 0:
+                    obj = json.loads(content)
+                    for key, value in obj.items():
+                        value = eval(value['__class__'])(**value)
+                        FileStorage.new(self, value)
+        return True
     def file_path():
         return FileStorage.__file_path
