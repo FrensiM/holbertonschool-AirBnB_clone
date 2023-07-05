@@ -56,6 +56,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         '''Deletes an instance based on the class name'''
+        arg = arg.split()
         if len(arg) == 0:
             print("** class name missing **")
             return False
@@ -87,6 +88,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         '''update an instance based in the class name'''
+        arg = arg.split(arg)
+        var = 0
         if len(arg) == 0:
             print("** class name missing **")
             return False
@@ -98,10 +101,10 @@ class HBNBCommand(cmd.Cmd):
             return False
         for key, value in storage.all().items():
             if value.id == arg[1]:
-                if value.__class__.__name__ == arg[0]:
-                    print(value)
-                    return
-        print('** no instance found **')
+                var  += 1
+        if var == 0:
+            print("** no instance found **")
+            return False
         if len(arg) == 2:
             print("** attribute name missing **")
             return False
