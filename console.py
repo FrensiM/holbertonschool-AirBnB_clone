@@ -6,6 +6,7 @@ import os
 from models import storage
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     '''console func'''
     prompt = "(hbnb) "
@@ -61,15 +62,15 @@ class HBNBCommand(cmd.Cmd):
         if arg[0] not in ls:
             print("** class doesn't exist ** ")
             return False
-        if len(arg) == 1:
+        if len(arg) != 2:
             print("** instance id missing **")
             return False
-        for key, value in storage.all().items():
-            if value.id == arg[1]:
-                if value.__class__.__name__ == arg[0]:
-                    print(value)
-                    return
-        print('** no instance found **')
+        check = arg[0] + '.' + arg[1]
+        if check in storage.all().keys():
+            del storage.all()[check]
+            storage.save()
+        else:
+            print('** no instance found **')
 
     def do_all(self, arg):
         '''Prints all str repr of instance of said Class'''
@@ -110,7 +111,8 @@ class HBNBCommand(cmd.Cmd):
         val = arg[3].split('"')
         setattr(value, arg[2], val[1])
         storage.save()
-        
+
+
 if __name__ == '__main__':
     ls = ['BaseModel']
     HBNBCommand().cmdloop()
