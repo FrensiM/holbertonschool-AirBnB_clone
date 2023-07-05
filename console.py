@@ -36,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         '''Prints the string representation of an instance'''
+        arg = arg.split()
         if len(arg) == 0:
             print("** class name missing **")
             return False
