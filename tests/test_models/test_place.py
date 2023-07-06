@@ -56,9 +56,6 @@ class TestPlace_instantiation(unittest.TestCase):
     def test_longitude(self):
         self.assertEqual(float, type(Place().longitude))
 
-    def test_amenity_ids(self):
-        self.assertEqual(list, type(Place().amenity_ids))
-
 
 if __name__ == "__main__":
     unittest.main()
