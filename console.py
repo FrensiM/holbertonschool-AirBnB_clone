@@ -4,7 +4,7 @@ import cmd
 import sys
 import os
 from models import storage
-from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -88,12 +88,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         '''update an instance based in the class name'''
-        arg = arg.split(arg)
+        arg = arg.split()
         var = 0
         if len(arg) == 0:
             print("** class name missing **")
             return False
         if arg[0] not in ls:
+            print(arg)
             print("** class doesn't exist **")
             return False
         if len(arg) == 1:

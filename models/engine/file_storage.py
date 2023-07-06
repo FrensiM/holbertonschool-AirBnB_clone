@@ -5,7 +5,6 @@ import json
 from models.base_model import BaseModel
 from models.user import User
 
-
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -41,5 +40,5 @@ class FileStorage:
                         FileStorage.new(self, value)
         return True
 
-    def file_path():
+    def file_path(self):
         return FileStorage.__file_path
