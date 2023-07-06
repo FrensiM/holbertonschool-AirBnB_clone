@@ -5,6 +5,7 @@ import sys
 import os
 from models import storage
 from models.user import User
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -102,6 +103,9 @@ class HBNBCommand(cmd.Cmd):
             return False
         for key, value in storage.all().items():
             if value.id == (arg[1]):
+                val = arg[3].split('"')
+                setattr(value, arg[2], val[1])
+                storage.save()
                 var  += 1
         if var == 0:
             print("** no instance found **")
@@ -112,9 +116,8 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) == 3:
             print(" ** value missing **")
             return False
-        val = arg[3].split('"')
-        setattr(value, arg[2], val[1])
-        storage.save()
+        
+        
 
 
 if __name__ == '__main__':
