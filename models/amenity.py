@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''Create State class'''
+'''Class amenity created'''
+
 
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
-    '''State class'''
+class Amenity(BaseModel):
     name = ""
