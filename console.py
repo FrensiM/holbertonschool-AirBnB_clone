@@ -104,9 +104,10 @@ class HBNBCommand(cmd.Cmd):
         for key, value in storage.all().items():
             if value.id == (arg[1]):
                 val = arg[3].split('"')
-                setattr(value, arg[2], val[1])
-                storage.save()
-                var  += 1
+                if len(val) > 1:
+                    setattr(value, arg[2], val[1])
+                    storage.save()
+                    var += 1
         if var == 0:
             print("** no instance found **")
             return False
@@ -116,8 +117,6 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) == 3:
             print(" ** value missing **")
             return False
-        
-        
 
 
 if __name__ == '__main__':
