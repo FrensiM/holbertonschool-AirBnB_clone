@@ -7,8 +7,6 @@ footer {
     right: 0;
     left: 0;
     bottom: 0;
-    border-top: 1px;
-    border-color: #CCCCCC;
-    border-style: solid;
+    border: 1px solid #CCCCCC;
     position: absolute;
 }
